@@ -2,7 +2,7 @@
 
 all: rpm
 
-dist:
+dist-latest:
 	@if [ ! -d ~/pcircle ]; then \
 	    echo "Can't find pcircle source"; \
    		exit 1; \
@@ -15,5 +15,5 @@ prep:
 
 rpm:prep pcircle.spec
 	echo "Building rpm"
-	rpm -ba pcircle.spec
+	rpmbuild -ba pcircle.spec
 
