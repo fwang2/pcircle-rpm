@@ -14,6 +14,6 @@ prep:
 	cp -f ~/pcircle/dist/*.gz ~/rpmbuild/SOURCES
 
 rpm:prep pcircle.spec
-	echo "Building rpm"
-	rpmbuild -ba pcircle.spec
+	echo "Building rpm, binary (-bb) only, for source rpm, use -ba"
+	rpmbuild -bb pcircle.spec
 
