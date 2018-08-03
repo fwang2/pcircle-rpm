@@ -23,9 +23,11 @@ Requires: openmpi
 Requires: python-cffi
 Requires: numpy
 Requires: python-scandir
-Requires: libattr-devel
+Requires: pyxattr
 Requires: mpi4py-openmpi
-Requires: python-future
+Requires: python2-future
+Requires: python2-bitarray
+
 #BuildRequires: lru-dict
 
 #Prefix: %{_prefix}
@@ -59,14 +61,14 @@ feedbacks, please post it here at https://github.com/olcf/pcircle/issues.
 %files
 %{python2_sitelib}/pcircle/
 %{python2_sitelib}/pcircle-*.egg-info
-/usr/bin/fcorruptor
+%exclude /usr/bin/fcorruptor
+%exclude /usr/bin/fdiff
+%exclude /usr/bin/fgen
+%exclude /usr/bin/fpipe
+%exclude /usr/bin/fwalk
 /usr/bin/fcp
-/usr/bin/fdiff
-/usr/bin/fgen
-/usr/bin/fpipe
 /usr/bin/fprof
 /usr/bin/fsum
-/usr/bin/fwalk
 
 %changelog
 

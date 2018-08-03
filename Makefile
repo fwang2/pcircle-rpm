@@ -11,9 +11,9 @@ dist-latest:
 
 prep:
 	rpmdev-setuptree
-	cp -f ~/pcircle/dist/*.gz ~/rpmbuild/SOURCES
+	cp -f tarballs/*.gz ~/rpmbuild/SOURCES/
 
 rpm:prep pcircle.spec
-	echo "Building rpm, binary (-bb) only, for source rpm, use -ba"
+	echo -n "Building rpm, binary (-bb) only, for source rpm, use -ba"
 	rpmbuild -bb pcircle.spec
 
