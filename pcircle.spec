@@ -2,35 +2,36 @@
 %define unmangled_version 0.17.1
 %define version 0.17.1
 %define release 1%{?dist}
-%define debug_package %{nil}
 
-Autoreq: 0
 # turn off auto dependency check
-#%define __find_requires %{nil}
-#%define __find_provides %{nill}
+Autoreq: 0
 
 Summary: A parallel file system tool suite
 Name: %{name}
 Version: %{version}
 Release: %{release}
-Source0: %{name}-%{unmangled_version}.tar.gz
+Source0: tarballs/%{name}-%{unmangled_version}.tar.gz
 License: Apache
 Group: Development/Libraries
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires: python >= 2.7
-BuildRequires: openmpi-devel
-BuildRequires: libffi-devel
+
+#BuildRequires: python >= 2.7
+#BuildRequires: openmpi-devel
+#BuildRequires: libffi-devel
 Requires: python >= 2.7
 Requires: openmpi
 Requires: python-cffi
 Requires: numpy
 Requires: python-scandir
-Requires: libattr-devel
+Requires: pyxattr
 Requires: mpi4py-openmpi
+Requires: python2-future
+Requires: python2-bitarray
+
 #BuildRequires: lru-dict
 
 #Prefix: %{_prefix}
-BuildArch: x86_64
+BuildArch: noarch
 Vendor: Feiyi Wang <fwang2@ornl.gov>
 Url: http://github.com/ORNL-TechInt/pcircle
 
@@ -44,10 +45,30 @@ active development, please use it at your own risk. For bug report and
 feedbacks, please post it here at https://github.com/olcf/pcircle/issues.
 
 
+# explictly give it a name
+# %package -n python2-%{name}
+
 
 %prep
 %setup -n %{name}-%{unmangled_version}
 
 %build
+%py2_build
+
+%install
+%py2_install
+
 %files
-%post
+%{python2_sitelib}/pcircle/
+%{python2_sitelib}/pcircle-*.egg-info
+%exclude /usr/bin/fcorruptor
+%exclude /usr/bin/fdiff
+%exclude /usr/bin/fgen
+%exclude /usr/bin/fpipe
+%exclude /usr/bin/fwalk
+/usr/bin/fcp
+/usr/bin/fprof
+/usr/bin/fsum
+
+%changelog
+
