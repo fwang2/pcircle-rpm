@@ -15,20 +15,16 @@ License: Apache
 Group: Development/Libraries
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
-#BuildRequires: python >= 2.7
-#BuildRequires: openmpi-devel
-#BuildRequires: libffi-devel
+BuildRequires: python-devel >= 2.7
+Requires: openmpi-devel
 Requires: python >= 2.7
-Requires: openmpi
 Requires: python-cffi
+Requires: mpi4py-openmpi
 Requires: numpy
 Requires: python-scandir
 Requires: pyxattr
-Requires: mpi4py-openmpi
 Requires: python2-future
 Requires: python2-bitarray
-
-#BuildRequires: lru-dict
 
 #Prefix: %{_prefix}
 BuildArch: noarch
