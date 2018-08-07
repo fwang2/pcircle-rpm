@@ -72,3 +72,5 @@ feedbacks, please post it here at https://github.com/olcf/pcircle/issues.
 
 %changelog
 
+* Tue Aug 7 2018 Feiyi Wang <fwang2@gmail.com> 0.17.1
+- Initial RPM release, openmpi flavor
